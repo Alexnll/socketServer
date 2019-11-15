@@ -410,7 +410,7 @@ void execCGI(int sockfd, char * requestFilePath, char * requestQueryString){
 	int pid = fork();
 	if(pid == 0){
 		// subprocess 
-		// duplicate pipefd
+		// duplicate pipefd and decorate pipefd[1] with 1(standard output)
 		dup2(pipefd[1], 1);
 		// execute the file with parameter
 		execl(requestFilePath, requestFilePath, requestQueryString, NULL);
