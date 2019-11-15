@@ -102,13 +102,13 @@ void main(int argc, char * argv[]){
 
 		char userName[USERNAME_LEN] = {0};
 		char password[PASSWORD_LEN] = {0};
-		int andIndex = 0;		
+		int endIndex = 0;		
 
-		while(queryString[andIndex] && queryString[andIndex] != '&')
-			++andIndex;
-		queryString[andIndex] = '\0';
+		while(queryString[endIndex] && queryString[endIndex] != '&')
+			++endIndex;
+		queryString[endIndex] = '\0';
 		sscanf(queryString, "username=%s", userName);
-		sscanf(queryString+andIndex+1, "password=%s", password);
+		sscanf(queryString+endIndex+1, "password=%s", password);
 
 		checkUser(userName, password);
 		free(queryString);
